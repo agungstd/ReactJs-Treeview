@@ -9,8 +9,10 @@ const Home = ({ page }) => {
         <div className="container">
           <h1 className="title">My {page}</h1>
           <p className="info">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Curious about a particular topic? We're here to help you find the
+            information you need in an enjoyable and informative way. Experience
+            unforgettable learning, filled with new knowledge that you can apply
+            in your daily life.
           </p>
           <button className="btn">Explore now</button>
         </div>
