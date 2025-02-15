@@ -1,17 +1,28 @@
 import { useCallback, useEffect, useState } from "react";
-import SidebarItem from "./SidebarItem.jsx";
+import SidebarItem from "./SidebarItem";
 import axios from "axios";
 
 const Sidebar = () => {
   const [items, setItems] = useState([]);
 
   const getData = useCallback(async () => {
-    const result = await axios.get("/menu");
-    return result.data;
+    try {
+      const result = await axios.get("/menu");
+      return result.data;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return [];
+    }
   }, []);
 
   useEffect(() => {
-    getData().then((data) => setItems(data));
+    let isMounted = true;
+    getData().then((data) => {
+      if (isMounted) setItems(data);
+    });
+    return () => {
+      isMounted = false;
+    };
   }, [getData]);
 
   return (
