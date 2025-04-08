@@ -6,7 +6,7 @@ const SidebarItem = ({ item }) => {
 
   const toggleOpen = () => setOpen(!open);
 
-  return item.childrens ? (
+  return item.childrens && Array.isArray(item.childrens) ? (
     <div className={open ? "sidebar-item open" : "sidebar-item"}>
       <div className="sidebar-title" onClick={toggleOpen}>
         <span>
