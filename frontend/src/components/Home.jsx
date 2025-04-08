@@ -1,13 +1,20 @@
 import Sidebar from "./Sidebar.jsx";
 import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 
 const Home = ({ page }) => {
+  const [currentPage, setCurrentPage] = useState(page);
+
+  useEffect(() => {
+    setCurrentPage(page);
+  }, [page]);
+
   return (
     <>
       <div className="main">
         <Sidebar />
         <div className="container">
-          <h1 className="title">My {page}</h1>
+          <h1 className="title">My {currentPage}</h1>
           <p className="info">
             Curious about a particular topic? We're here to help you find the
             information you need in an enjoyable and informative way. Experience
