@@ -9,6 +9,15 @@ axios.defaults.headers.post["Content-Type"] =
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 axios.defaults.timeout = import.meta.env.VITE_API_TIMEOUT;
 
+
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.error("Error:", error.message);
+    return Promise.reject(error); 
+  }
+);
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
